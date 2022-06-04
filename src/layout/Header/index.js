@@ -1,6 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import getLocalItem from '../../util/localStorage'
 
-const index = () => {
+const Index = () => {
+  const nevigate = useNavigate()
   return (
     <React.Fragment>
       <header className='header'>
@@ -9,13 +12,31 @@ const index = () => {
         </div>
         <div className='header__network-warning'></div>
         <div className='header__user-details'>
-          Welcome Jack Sparrow
-          <h4>Sign In</h4>
-          <h4>Sign Up</h4>
+          {getLocalItem('user')?.email ? (
+            <>
+              Welcome Jack Sparrow
+              <h4
+                onClick={() => {
+                  localStorage.removeItem('user')
+                  nevigate('/signin')
+                }}
+              >
+                Logout
+              </h4>
+            </>
+          ) : (
+            <>
+              {window.location.pathname === '/signin' ? (
+                <h4>Sign Up</h4>
+              ) : (
+                <h4>Sign In</h4>
+              )}
+            </>
+          )}
         </div>
       </header>
     </React.Fragment>
   )
 }
 
-export default index
+export default Index
