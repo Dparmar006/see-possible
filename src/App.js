@@ -20,7 +20,9 @@ function App () {
                   path={route.path}
                   element={
                     user?.email ? (
-                      <BasicLayout>{route.component}</BasicLayout>
+                      <BasicLayout title={route.title}>
+                        {route.component}
+                      </BasicLayout>
                     ) : (
                       <BasicLayout>
                         <Login />
