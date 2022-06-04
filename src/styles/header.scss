@@ -1,0 +1,25 @@
+@import './variable.scss';
+$headerHeight: 3.5rem;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $secondaryColor;
+    height: $headerHeight;
+    padding: .5rem 2.5rem;
+}
+
+.header__logo{
+    width: 8rem;
+}
+.header__logo div{
+    width: 8rem;
+    height: 2rem;
+    background-color: $darkGray;
+}
+
+.header__user-details {
+    display: flex;
+    gap: 1rem;
+}

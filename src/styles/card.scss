@@ -1,0 +1,22 @@
+@import "./variable.scss";
+
+.addresscard {
+    padding: 1rem;
+    width: 100%;
+    font-weight: 500;
+    background: $secondaryColor;
+    max-width: 16rem;
+    position: relative;
+    
+    .addresscard__edit {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+    
+    .addresscard__delete {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+    }
+}

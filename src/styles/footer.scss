@@ -1,0 +1,17 @@
+@import './variable.scss';
+
+$footerHeight: 3.5rem;
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $secondaryColor;
+    height: $footerHeight;
+    padding: .5rem 2.5rem;
+
+    .footer__sm {
+        display: flex;
+        gap: .6rem;
+    }
+}

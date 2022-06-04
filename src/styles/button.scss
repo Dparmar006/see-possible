@@ -1,0 +1,9 @@
+@import "./variable.scss";
+
+.button {
+    padding: 1rem;
+    outline: none;
+    background: $buttonColor;
+    color: #fff;
+    font-weight: 500;
+}
