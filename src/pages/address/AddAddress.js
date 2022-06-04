@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
@@ -6,17 +7,34 @@ import api from '../../util/api'
 
 const AddAddress = () => {
   const [fields, setFields] = useState({})
-
+  const { id } = useParams()
+  const nevigate = useNavigate()
   const fieldChange = e => {
     setFields({ ...fields, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async e => {
+  const fetchData = async () => {
+    try {
+      const response = await api.get(`/address/${id}`)
+      setFields({ ...response.data })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    if (id) {
+      fetchData()
+    }
+  }, [])
+
+  const handleEditAddress = async e => {
     e.preventDefault()
     try {
-      const response = await api.post('/address', { ...fields })
-      if (response.status === 201) {
-        toast.success('Address added successfully')
+      const response = await api.put(`/address/${id}`, { ...fields })
+      if (response.status === 200) {
+        toast.success('Address edited successfully')
+        nevigate('/')
       }
     } catch (error) {
       toast.error(
@@ -27,13 +45,32 @@ const AddAddress = () => {
     }
   }
 
+  const handleAddAddress = async e => {
+    e.preventDefault()
+    try {
+      const response = await api.post('/address', { ...fields })
+      if (response.status === 201) {
+        toast.success('Address added successfully')
+      }
+    } catch (error) {
+      toast.error(
+        'Something bad happened, Make sure you are connected to internet'
+      )
+      console.log({ ...error })
+    } finally {
+      setFields({})
+    }
+  }
+
   return (
     <React.Fragment>
       <div className='column-flex'>
-        <h2>Add / Edit Address</h2>
+        <h2>{id ? 'Edit' : 'Add'} Address</h2>
         <form
           method='POST'
-          onSubmit={e => handleSubmit(e)}
+          onSubmit={e => {
+            id ? handleEditAddress(e) : handleAddAddress(e)
+          }}
           className='addressform'
         >
           <Input

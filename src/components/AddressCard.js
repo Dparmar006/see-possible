@@ -3,6 +3,7 @@ import { BiEditAlt, BiTrash } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import api from '../util/api'
+import Button from './Button'
 const AddressCard = ({ address, fetchData }) => {
   const nevigate = useNavigate()
 
@@ -22,15 +23,24 @@ const AddressCard = ({ address, fetchData }) => {
         <p className='addresscard__content'>{address.addressId}</p>
         <BiEditAlt
           onClick={() => {
-            toast.success('Address added successfully')
-
-            //   nevigate('/manage-address')}
+            nevigate(`/manage-address/${address.id}`)
           }}
           className='addresscard__edit'
         />
         <BiTrash
           onClick={() => {
-            handleDelete(address.id)
+            toast.warning(
+              <div>
+                Are you sure you want to
+                <Button
+                  onClick={() => handleDelete(address.id)}
+                  className={'button-sm'}
+                >
+                  Delete
+                </Button>{' '}
+                this address ?
+              </div>
+            )
           }}
           className='addresscard__delete'
         />

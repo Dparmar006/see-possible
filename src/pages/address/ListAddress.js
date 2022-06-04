@@ -6,12 +6,12 @@ import Input from '../../components/Input'
 import api from '../../util/api'
 
 const ListAddress = () => {
+  const [searchTerm, setSearchTerm] = useState('')
   const [addressList, setAddressList] = useState([])
 
   const fetchData = async () => {
     try {
       const response = await api.get('/address')
-      console.log(response)
       setAddressList(response.data)
     } catch (error) {
       console.log(error)
@@ -27,15 +27,27 @@ const ListAddress = () => {
       <div className='column-flex'>
         <h2>Address Book</h2>
 
-        <Input />
+        <Input
+          type='search'
+          value={searchTerm}
+          wrapperClass='d_w-30'
+          onChange={e => setSearchTerm(e.target.value)}
+        />
         <div className='address__list'>
-          {addressList.map(address => (
-            <AddressCard
-              address={address}
-              key={address.id}
-              fetchData={fetchData}
-            />
-          ))}
+          {addressList
+            .filter(ele => {
+              return Object.values(ele)
+                ?.join('')
+                ?.toLowerCase()
+                ?.includes(searchTerm?.toLowerCase())
+            })
+            .map(address => (
+              <AddressCard
+                address={address}
+                key={address.id}
+                fetchData={fetchData}
+              />
+            ))}
         </div>
 
         <Link to='/manage-address'>

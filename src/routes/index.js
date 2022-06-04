@@ -11,7 +11,12 @@ const allRoutes = [
   },
   {
     title: 'Manage Address',
-    path: '/manage-address',
+    path: '/manage-address/',
+    component: <AddAddress />
+  },
+  {
+    title: 'Manage Address',
+    path: '/manage-address/:id',
     component: <AddAddress />
   },
   {

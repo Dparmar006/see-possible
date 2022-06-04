@@ -5,6 +5,13 @@
     display: flex;
     flex-direction: column;
     gap: .2rem;
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    top: 25%;
+    left: 2%;
 }
 .input {
     padding: .4rem .5rem;

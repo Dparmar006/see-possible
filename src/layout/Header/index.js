@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../App'
 import getLocalItem from '../../util/localStorage'
 
 const Index = () => {
   const nevigate = useNavigate()
+  const authContext = useContext(AuthContext)
   return (
     <React.Fragment>
       <header className='header'>
-        <div className='header__logo'>
+        <div onClick={() => nevigate('/')} className='header__logo'>
           <div />
         </div>
         <div className='header__network-warning'></div>
         <div className='header__user-details'>
-          {getLocalItem('user')?.email ? (
+          {authContext?.user?.email ? (
             <>
-              Welcome Jack Sparrow
+              Welcome {authContext?.user?.email}
               <h4
                 onClick={() => {
+                  authContext?.setUser({ email: '', password: '' })
                   localStorage.removeItem('user')
                   nevigate('/signin')
                 }}

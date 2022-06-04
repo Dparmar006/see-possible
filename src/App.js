@@ -22,7 +22,9 @@ function App () {
                     user?.email ? (
                       <BasicLayout>{route.component}</BasicLayout>
                     ) : (
-                      <Login />
+                      <BasicLayout>
+                        <Login />
+                      </BasicLayout>
                     )
                   }
                 />
