@@ -1,7 +1,20 @@
+@import "../variable.scss";
+
 .address__list {
     width: 80%;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.addressform {
+    background-color: $secondaryColor;
+    padding: 2rem;
+        display: flex;
+    width: 50%;
+    max-width: 80%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
 }

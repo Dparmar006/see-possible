@@ -13,3 +13,15 @@
     flex-direction: column;
     justify-content: space-around;
 }
+$i : 0;
+@while $i < 105 {
+    .d_w-#{$i} {
+        $wid: $i * 1%;
+        width: $wid;
+    }
+    .d_h-#{$i} {
+        $wid: $i * 1%;
+        width: $wid;
+    }
+    $i: $i + 5;
+}

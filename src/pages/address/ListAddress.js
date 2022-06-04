@@ -1,70 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import AddressCard from '../../components/AddressCard'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
-const addressList = [
-  {
-    addressId: 'ABC123',
-    firstName: 'Hello',
-    lastName: 'World',
-    addressLine1: 'Mota varacha',
-    addressLine2: 'XY Road',
-    city: 'Surat',
-    state: 'Gujarat',
-    country: 'India',
+import api from '../../util/api'
 
-    pincode: 394120
-  },
-  {
-    addressId: 'ABC123',
-    firstName: 'Hello',
-    lastName: 'World',
-    addressLine1: 'Mota varacha',
-    addressLine2: 'XY Road',
-    city: 'Surat',
-    state: 'Gujarat',
-    country: 'India',
-
-    pincode: 394120
-  },
-  {
-    addressId: 'ABC123',
-    firstName: 'Hello',
-    lastName: 'World',
-    addressLine1: 'Mota varacha',
-    addressLine2: 'XY Road',
-    city: 'Surat',
-    state: 'Gujarat',
-    country: 'India',
-
-    pincode: 394120
-  },
-  {
-    addressId: 'ABC123',
-    firstName: 'Hello',
-    lastName: 'World',
-    addressLine1: 'Mota varacha',
-    addressLine2: 'XY Road',
-    city: 'Surat',
-    state: 'Gujarat',
-    country: 'India',
-
-    pincode: 394120
-  },
-  {
-    addressId: 'ABC123',
-    firstName: 'Hello',
-    lastName: 'World',
-    addressLine1: 'Mota varacha',
-    addressLine2: 'XY Road',
-    city: 'Surat',
-    state: 'Gujarat',
-    country: 'India',
-
-    pincode: 394120
-  }
-]
 const ListAddress = () => {
+  const [addressList, setAddressList] = useState([])
+
+  const fetchData = async () => {
+    try {
+      const response = await api.get('/address')
+      console.log(response)
+      setAddressList(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <React.Fragment>
       <div className='column-flex'>
@@ -73,11 +30,17 @@ const ListAddress = () => {
         <Input />
         <div className='address__list'>
           {addressList.map(address => (
-            <AddressCard address={address} />
+            <AddressCard
+              address={address}
+              key={address.id}
+              fetchData={fetchData}
+            />
           ))}
         </div>
 
-        <Button>Add new Address</Button>
+        <Link to='/manage-address'>
+          <Button>Add new Address</Button>
+        </Link>
       </div>
     </React.Fragment>
   )

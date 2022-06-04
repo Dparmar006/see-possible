@@ -1,0 +1,37 @@
+{
+  "address": [
+    {
+      "id": "ABC123",
+      "firstName": "Hello",
+      "lastName": "World",
+      "addressLine1": "Mota varacha",
+      "addressLine2": "XY Road",
+      "city": "Surat",
+      "state": "Gujarat",
+      "country": "India",
+      "pincode": 394120
+    },
+    {
+      "firstName": "Johnyy",
+      "lastName": "Depp",
+      "addressLine1": "In his home",
+      "addressLine2": "alone",
+      "city": "San",
+      "state": "Diago",
+      "country": "US",
+      "telephone": "823291273921",
+      "id": "eyn20B1"
+    },
+    {
+      "firstName": "Dixit",
+      "lastName": "Parmar",
+      "addressLine1": "Shalimar complex, Hanuman mandir, Kosamba",
+      "city": "Kosamba",
+      "state": "Gujarat",
+      "addressLine2": "sds",
+      "country": "sds",
+      "telephone": "222",
+      "id": "_MFNM2z"
+    }
+  ]
+}
