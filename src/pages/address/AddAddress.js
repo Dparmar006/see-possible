@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -9,8 +10,36 @@ const AddAddress = () => {
   const [fields, setFields] = useState({})
   const { id } = useParams()
   const nevigate = useNavigate()
+
   const fieldChange = e => {
     setFields({ ...fields, [e.target.name]: e.target.value })
+    // if (e.target.name === 'pincode' && e.target.value.length === 6) {
+    //   fetchAddressSuggetions(e.target.value)
+    // }
+  }
+
+  const fetchAddressSuggetions = async e => {
+    e.preventDefault()
+    if (e.target.value.length !== 6) {
+      return
+    }
+    try {
+      const response = await axios.get(
+        `https://api.postalpincode.in/pincode/${e.target.value}`
+      )
+
+      if (response.status === 200) {
+        let sugg = response.data[0]?.PostOffice?.[0]
+        setFields({
+          ...fields,
+          state: sugg?.State,
+          city: sugg?.Division,
+          country: sugg?.Country
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const fetchData = async () => {
@@ -18,6 +47,7 @@ const AddAddress = () => {
       const response = await api.get(`/address/${id}`)
       setFields({ ...response.data })
     } catch (error) {
+      toast.error('Something bad happened on server')
       console.log(error)
     }
   }
@@ -51,6 +81,7 @@ const AddAddress = () => {
       const response = await api.post('/address', { ...fields })
       if (response.status === 201) {
         toast.success('Address added successfully')
+        nevigate('/')
       }
     } catch (error) {
       toast.error(
@@ -67,6 +98,7 @@ const AddAddress = () => {
       <div className='column-flex'>
         <h2>{id ? 'Edit' : 'Add'} Address</h2>
         <form
+          autoComplete='off'
           method='POST'
           onSubmit={e => {
             id ? handleEditAddress(e) : handleAddAddress(e)
@@ -87,6 +119,15 @@ const AddAddress = () => {
             value={fields.lastName}
             name='lastName'
             label='First name'
+            required
+          />
+          <Input
+            wrapperClass='d_w-95'
+            onChange={fieldChange}
+            value={fields.pincode}
+            name='pincode'
+            onBlur={e => fetchAddressSuggetions(e)}
+            label='Pincode / Zip code'
             required
           />
           <Input
@@ -136,7 +177,7 @@ const AddAddress = () => {
             value={fields.telephone}
             name='telephone'
             label='Telephone'
-            type='number'
+            type='tel'
             required
           />
 

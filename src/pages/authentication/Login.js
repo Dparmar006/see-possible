@@ -28,7 +28,9 @@ const Login = () => {
       )
       authContext.setUser({
         email: 'dixit@gmail.com',
-        password: '12345678'
+        password: '12345678',
+        firstName: 'Dixit',
+        lastName: 'Parmar'
       })
       navigate('/')
     } else {

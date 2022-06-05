@@ -16,7 +16,9 @@ const Index = () => {
         <div className='header__user-details'>
           {authContext?.user?.email ? (
             <>
-              Welcome {authContext?.user?.email}
+              Welcome{' '}
+              {`${authContext?.user?.firstName || ''} ${authContext?.user
+                ?.lastName || ''}`}
               <h4
                 onClick={() => {
                   authContext?.setUser({ email: '', password: '' })

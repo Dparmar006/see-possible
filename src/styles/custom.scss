@@ -6,9 +6,19 @@
     font-family: "Inter";
 }
 
+body {
+    overflow: hidden;
+}
+
+.page-content {
+    height: calc(100vh - 8rem);
+    overflow-y: auto;
+    padding-top: 1rem;
+}
 .column-flex {
-    height: calc(100vh - 3.5rem);
+    // height: 100%;
     display: flex;
+    gap: 1rem;
     align-items: center;
     flex-direction: column;
     justify-content: space-around;

@@ -8,7 +8,7 @@ const BasicLayout = ({ children, title }) => {
   return (
     <React.Fragment>
       <Header />
-      {children}
+      <div className='page-content'>{children}</div>
       <Footer />
     </React.Fragment>
   )

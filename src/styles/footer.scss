@@ -9,9 +9,19 @@ $footerHeight: 3.5rem;
     background-color: $secondaryColor;
     height: $footerHeight;
     padding: .5rem 2.5rem;
+        margin-top: 1rem;
+
 
     .footer__sm {
         display: flex;
         gap: .6rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: 1rem;
+        height: fit-content;
     }
 }

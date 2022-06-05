@@ -1,49 +1,16 @@
 {
   "address": [
     {
-      "id": "ABC123",
-      "firstName": "Hello 👋 ",
-      "lastName": "World 🌏 ",
-      "addressLine1": "Mota varacha",
-      "addressLine2": "XY Road",
-      "city": "Surat",
-      "state": "Gujarat",
-      "country": "India",
-      "pincode": 394120,
-      "telephone": "2"
-    },
-    {
-      "firstName": "Johnyy",
-      "lastName": "Depp",
-      "addressLine1": "In his home",
-      "addressLine2": "alone",
-      "city": "San",
-      "state": "Diago",
-      "country": "US",
-      "telephone": "823291273921",
-      "id": "eyn20B1"
-    },
-    {
       "firstName": "Dixit",
       "lastName": "Parmar",
+      "pincode": "394120",
       "addressLine1": "Shalimar complex, Hanuman mandir, Kosamba",
       "city": "Kosamba",
       "state": "Gujarat",
-      "addressLine2": "sds",
-      "country": "sds",
-      "telephone": "222",
-      "id": "_MFNM2z"
-    },
-    {
-      "firstName": "Dexter",
-      "lastName": "Scientific",
-      "addressLine1": "His lab",
-      "addressLine2": "doin something",
-      "city": "IDK",
-      "state": "California",
-      "country": "USA",
-      "telephone": "123",
-      "id": "L5d05Ar"
+      "addressLine2": "1",
+      "country": "2",
+      "telephone": "2",
+      "id": 1
     }
   ]
 }

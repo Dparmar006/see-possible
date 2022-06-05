@@ -6,15 +6,27 @@
     justify-content: flex-start;
     gap: 1rem;
     flex-wrap: wrap;
+
 }
 
 .addressform {
     background-color: $secondaryColor;
     padding: 2rem;
-        display: flex;
+    display: flex;
     width: 50%;
     max-width: 80%;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .address__list {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+    }
+    .addressform {
+        width: 100%;
+    }
 }

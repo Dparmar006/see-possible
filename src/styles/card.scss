@@ -20,3 +20,50 @@
         bottom: 1rem;
     }
 }
+.loading {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.loading__card {
+      padding: 1rem;
+    width: 100%;
+    font-weight: 500;
+    background: $secondaryColor;
+    max-width: 16rem;
+    position: relative;
+    height: 212px;
+    width: 256px;
+    overflow: hidden;
+    &::before{
+        height: 35px;
+        display: block;
+        transform: rotate(45deg);
+        content: "";
+        left: -150px;
+        position: absolute;
+        width: 700px;
+        top: -50px;
+        box-shadow: 2px 4px 50px #00000022;
+        background: rgba(0, 0, 0, 0.05);
+        animation: shine 4s infinite .1s;
+    }
+}
+
+@keyframes shine {
+    0% {
+        top: -50px;
+    }
+    25%{
+        top: 500px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .addresscard {
+        max-width: 100%;
+        width: 100%;
+    }
+
+}

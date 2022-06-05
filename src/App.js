@@ -5,7 +5,10 @@ import Login from './pages/authentication/Login'
 import PageNotFound from './pages/authentication/PageNotFound'
 import allRoutes from './routes'
 import getLocalItem from './util/localStorage'
-export const AuthContext = createContext({ email: '', password: '' }, () => {})
+export const AuthContext = createContext(
+  { email: '', password: '', firstName: '', lastName: '' },
+  () => {}
+)
 function App () {
   const [user, setUser] = useState(getLocalItem('user'))
 

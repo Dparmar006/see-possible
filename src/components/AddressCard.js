@@ -20,7 +20,7 @@ const AddressCard = ({ address, fetchData }) => {
   return (
     <React.Fragment>
       <div className='addresscard'>
-        <p className='addresscard__content'>{address.addressId}</p>
+        <p className='addresscard__content'> Address Id : {address.id}</p>
         <BiEditAlt
           onClick={() => {
             nevigate(`/manage-address/${address.id}`)
